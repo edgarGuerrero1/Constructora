@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>index</title>
+    </head>
+    <body class="pag">
+
+        
+        <div class="galeria">
+            <div class="topnav" id="myTopnav">
+            <p class="tit"> LGB </p>
+            <p class="tit1">Constructions</p>
+            <a  class="active" href="#Formulario">About us</a>
+            <a  class="active" href="#Contact">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+
+
+        	
+            <div class="col1" href="proyectos">
+                <img class="image" src="img/a2.jpg">
+
+
+                <img class="image" src="img/c2.webp">
+                <img class="image" src="img/a4.webp">
+            </div>
+
+            <div class="col2">
+                <!--<img class="image" src="img/centro.jpg">-->
+                <img class="image" src="img/a3.jpg">
+                <img class="image" src="img/cc1.jpg">
+                
+              
+            </div>
+
+            <div class="col3">
+                <img class="image" src="img/a1.webp">
+                <img class="image" src="img/c1.jpg">
+
+            </div>
+            <div class="cont" id="Formulario">
+                <div class="info">
+                    <p class="tit2">LGB Constructions</p>
+                    <p class="bod">We are a company dedicated to the design and construction of housing and exterior conditioning, founded in Chicago since 1978</p>
+                    <p class="bod">the quality is synonymous with our work, contact us to make quotation and budget, we will get in touch with you</p>
+                
+                </div>
+                <div class="maps">
+                  
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226246.62478342332!2d-87.91527720728266!3d41.836027435085214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C+Illinois%2C+EE.+UU.!5e0!3m2!1ses-419!2smx!4v1542752866077" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="cont">
+                <div class="formulario" id="Contact">
+                    <form method="post" >
+                        <div class="w3-group">
+                            <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" placeholder="Please write client's name" name="UserName" required><br>
+                            <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" placeholder="Region" name="Region" required><br>
+                            <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" placeholder="Phone number" name="Phone" required><br>
+                            <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" placeholder="Email" name="Email"><br>
+                            <select name="Categoria" required>  
+                                <option value="Pintura">Painting</option>
+                                <option value="Plomeria">Plumbing</option>
+                                <option value="Diseno">Home design interior</option>
+                                <option value="Building">Building</option>
+                                <option value="Carpentry">Carpentry</option>
+                            </select>
+                            <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" placeholder="Other" name="Other"></br>                            
+                            <input type="submit" action="../op/alta.php" class="w3-btn w3-btn-block w3-padding-12" /></br>
+                        </div>
+                        
+                    </form>
+
+
+                </div>
+                <div class="cimg">
+                    <img class="chimg" src="img/chic.jpg">
+                </div>
+            </div>
+                
+            <div class="footer">
+                <p class="fa">Edgar Alberto Guerrero Rubio IDS TecMilenio</br>
+                Desarrollo de proyecto de  ingenier&iaccute;a de software</br>
+                GR_design phone 521 3311967563</p>
+            </div>
+        </div>
+       
+    </body>
+</html>
+
+<?php 
+require('op/conexion_db.php');
+
+         if (isset($_REQUEST['UserName'])) {
+         $UserName = $_REQUEST['UserName'];
+         } else {
+         $UserName = "";
+         }
+
+         if (isset($_REQUEST['Categoria'])) {
+         $Categoria = $_REQUEST['Categoria'];
+         } else {
+         $Categoria = "";
+         }
+
+         if (isset($_REQUEST['Region'])) {
+         $Region = $_REQUEST['Region'];
+         } else {
+         $Region = "";
+         }
+
+         if (isset($_REQUEST['Phone'])) {
+         $Phone = $_REQUEST['Phone'];
+         } else {
+         $Phone = "";
+         }
+
+         if (isset($_REQUEST['Other'])) {
+         $Other = $_REQUEST['Other'];
+         } else {
+         $Other = "";
+         }
+
+         if (isset($_REQUEST['Email'])) {
+         $Email = $_REQUEST['Email'];
+         } else {
+         $Email = "";
+         }
+
+         if (isset($_REQUEST['Estatus'])) {
+         $Estatus = $_REQUEST['Estatus'];
+         } else {
+         $Estatus = "";
+         }
+
+         /*if (isset($_REQUEST['Fecha'])) {
+         $Fecha = $_REQUEST['Fecha'];
+         } else {
+         $Fecha = "";
+         }*/
+
+    mysqli_query($conexion,"INSERT INTO user(UserName, Categoria, Region, Telefono,Email, Estatus, Comentario) 
+    values('$UserName', '$Categoria', '$Region', '$Phone', '$Email', '$Estatus', '$Other')") 
+    or die( "user: ".mysqli_error($conexion));
+     mysqli_close($conexion);
+
+ ?>
